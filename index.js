@@ -1,3 +1,4 @@
+const UserContext = React.createContext(null);
 function Spa() {
   const Route = ReactRouterDOM.Route;
   const Link = ReactRouterDOM.Link;
@@ -11,9 +12,11 @@ function Spa() {
         <Link to="/about">About</Link> --
         <Link to="/products">Products</Link>
         <hr />
-        <Route path="/" exact component={Home} />
-        <Route path="/about/" component={About} />
-        <Route path="/products/" component={Products} />
+        <UserContext.Provider value={{ users: ["John"] }}>
+          <Route path="/" exact component={Home} />
+          <Route path="/about/" component={About} />
+          <Route path="/products/" component={Products} />
+        </UserContext.Provider>
       </div>
     </HashRouter>
   );
