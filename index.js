@@ -1,9 +1,7 @@
 function Spa() {
   return (
     <HashRouter>
-      <h1>Welcome to BadBank</h1>
       <Nav></Nav>
-      <hr />
       <UserContext.Provider
         value={{
           users: [{ name: "Nandhu", email: "nandhu@gmail.com", balance: 100 }],
