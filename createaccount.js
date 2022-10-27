@@ -13,8 +13,20 @@ function CreateAccount() {
     setShow(true);
   }
 
+  function validate(field, label) {
+    if (!field) {
+      setStatus("Error " + label);
+      setTimeout(() => setStatus(""), 3000);
+      return false;
+    }
+    return true;
+  }
+
   function handleCreate() {
     console.log(name, email, password);
+    if (!validate(name, "name")) return;
+    if (!validate(email, "email")) return;
+    if (!validate(password, "password")) return;
     ctx.users.push({ name, email, password, balnce: 100 });
     setShow(false);
   }
