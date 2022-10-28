@@ -4,7 +4,14 @@ function Spa() {
       <Nav></Nav>
       <UserContext.Provider
         value={{
-          users: [{ name: "Nandhu", email: "nandhu@gmail.com", balance: 100 }],
+          users: [
+            {
+              name: "Nandhu",
+              email: "nandhu@gmail.com",
+              password: "secret",
+              balance: 100,
+            },
+          ],
         }}
       >
         <Route path="/" exact component={Home}></Route>
