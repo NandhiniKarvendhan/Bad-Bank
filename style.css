@@ -1,0 +1,20 @@
+.mb-3 {
+  padding: 10px;
+}
+.form-control {
+  max-width: 14rem;
+}
+.btn {
+  margin: 10px;
+}
+.form-header {
+  font-size: 46px;
+  font-weight: 1000px;
+  margin: 10px;
+}
+.form-container {
+  padding: 10px;
+  max-width: 20rem;
+  border-radius: 5px;
+  background-color: red;
+}
