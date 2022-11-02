@@ -31,7 +31,7 @@ function BankForm(props) {
   }
 
   return (
-    <form className={classes()} style={{ maxWidth: "18rem" }}>
+    <form className={classes()}>
       <div className="form-header">{props.header}</div>
       <hr />
       <div className="mb-3">
@@ -61,7 +61,7 @@ function BankForm(props) {
           id="exampleInputPassword1"
         />
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-outline-light">
         Submit
       </button>
     </form>
