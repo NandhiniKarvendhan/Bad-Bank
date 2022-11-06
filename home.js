@@ -2,7 +2,7 @@ function Home() {
   return (
     <div className="card-container">
       <Card
-        bgcolor="success"
+        bgcolor="light"
         txtcolor="black"
         header="BadBank Landing Module"
         title="Welcome to the bank"
