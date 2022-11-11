@@ -23,47 +23,47 @@ function Card(props) {
   );
 }
 
-// function BankForm(props) {
-//   function classes() {
-//     const bg = props.bgcolor ? " bg-" + props.bgcolor : " ";
-//     const txt = props.txtcolor ? " text-" + props.txtcolor : " text-white";
-//     return "form mb-3 " + bg + txt;
-//   }
+function Form(props) {
+  return (
+    <form>
+      <label>{props.label1}</label>
+      <input
+        type={props.type1}
+        id={props.id1}
+        className="form-control"
+        placeholder={props.placeholder1}
+        value={props.value1}
+        onChange={props.onChange1}
+      ></input>
 
-//   return (
-//     <form className={classes()}>
-//       <div className="form-header">{props.header}</div>
-//       <hr />
-//       <div className="mb-3">
-//         <label for="exampleInputName1" className="form-label">
-//           Name
-//         </label>
-//         <input type="text" className="form-control" id="exampleInputName1" />
-//       </div>
-//       <div className="mb-3">
-//         <label for="exampleInputEmail1" className="form-label">
-//           Email
-//         </label>
-//         <input
-//           type="email"
-//           className="form-control"
-//           id="exampleInputEmail1"
-//           aria-describedby="emailHelp"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         <label for="exampleInputPassword1" className="form-label">
-//           Password
-//         </label>
-//         <input
-//           type="password"
-//           className="form-control"
-//           id="exampleInputPassword1"
-//         />
-//       </div>
-//       <button type="submit" className="btn btn-outline-light">
-//         Submit
-//       </button>
-//     </form>
-//   );
-// }
+      <label>{props.label2}</label>
+      <input
+        type={props.type2}
+        id={props.id2}
+        className="form-control"
+        placeholder={props.placeholder2}
+        value={props.value2}
+        onChange={props.onChange2}
+      ></input>
+
+      <label>{props.label3}</label>
+      <input
+        type={props.type3}
+        id={props.id3}
+        className="form-control"
+        placeholder={props.placeholder3}
+        value={props.value3}
+        onChange={props.onChange3}
+      ></input>
+      <br />
+      <button
+        type="submit"
+        className="btn btn-light"
+        onClick={props.onClick}
+        disabled={props.disabled}
+      >
+        {props.button}
+      </button>
+    </form>
+  );
+}
