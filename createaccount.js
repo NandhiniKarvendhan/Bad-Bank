@@ -4,25 +4,17 @@ function CreateAccount() {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  // const [disabled, setDisabled] = React.useState(true);
+  const [disabled, setDisabled] = React.useState(true);
   const ctx = React.useContext(UserContext);
 
-  // const isValid = { disabled };
   function clearForm() {
     setName("");
     setEmail("");
     setPassword("");
     setShow(true);
-    // setDisabled(true);
+    setDisabled(true);
   }
-  // function disAble() {
-  //   let isValid = true;
-  //   if (!validate(name, "name") == true) {
-  //     return (isValid = false);
-  //   } else {
-  //     return (isValid = true);
-  //   }
-  // }
+
   function validate(field, label) {
     if (!field) {
       setStatus(alert("Error " + label));
@@ -33,7 +25,6 @@ function CreateAccount() {
       setStatus(alert("password must have 8 characters"));
       return false;
     }
-
     return true;
   }
 
@@ -42,7 +33,6 @@ function CreateAccount() {
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
-    // setDisabled(false);
     ctx.users.push({ name, email, password, balance: 100 });
     setShow(false);
   }
@@ -50,64 +40,55 @@ function CreateAccount() {
   return (
     <div className="card-container">
       <Card
-        bgcolor={show ? "secondary" : "success"}
+        bgcolor={show ? "info" : "success"}
         header="Create Account"
         status={status}
         body={
           show ? (
             <>
-              Name
-              <br />
-              <input
-                type="input"
-                id="name"
-                className="form-control"
-                placeholder="Enter name.."
-                value={name}
-                onChange={(e) => setName(e.currentTarget.value)}
-              ></input>
-              <br />
-              Email address
-              <br />
-              <input
-                type="input"
-                id="email"
-                className="form-control"
-                placeholder="Enter email.."
-                value={email}
-                onChange={(e) => setEmail(e.currentTarget.value)}
-              ></input>
-              <br />
-              Password
-              <br />
-              <input
-                type="input"
-                id="password"
-                className="form-control"
-                placeholder="Enter password.."
-                value={password}
-                onChange={(e) => setPassword(e.currentTarget.value)}
-              ></input>
-              <br />
-              <button
-                type="submit"
-                className="btn btn-light"
+              <Form
+                label1="Name"
+                type1="input"
+                id1="name"
+                placeholder1="Enter name.."
+                value1={name}
+                onChange1={(e) => {
+                  setName(e.currentTarget.value);
+                  setDisabled(false);
+                }}
+                label2="Email address"
+                type2="email"
+                id2="email"
+                placeholder2="Enter email.."
+                value2={email}
+                onChange2={(e) => {
+                  setEmail(e.currentTarget.value);
+                  setDisabled(false);
+                }}
+                label3="Password"
+                type3="input"
+                id3="password"
+                placeholder3="Enter password.."
+                value3={password}
+                onChange3={(e) => {
+                  setPassword(e.currentTarget.value);
+                  setDisabled(false);
+                }}
                 onClick={handleCreate}
-                // disabled={isValid}
-              >
-                Create Account
-              </button>
+                disabled={disabled}
+                button="Create Account"
+              ></Form>
             </>
           ) : (
             <>
               <h5>Success! You have created an account</h5>
-              <button
-                type="submit"
-                className="btn btn-light"
+              <Form
+                type1="hidden"
+                type2="hidden"
+                type3="hidden"
                 onClick={clearForm}
-              >
-                Add another account
-              </button>
+                button="Add another account"
+              ></Form>
             </>
           )
         }
