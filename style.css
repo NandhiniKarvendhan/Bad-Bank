@@ -1,23 +1,22 @@
-.mb-3 {
+/* .mb-3 {
   padding: 10px;
-}
-.form-control {
+} */
+/* .form-control {
   max-width: 14rem;
-}
-.btn {
-  /* margin: 10px; */
-}
-.form-header {
+} */
+/* .form-header {
   font-size: 46px;
   font-weight: 1000px;
   margin: 10px;
-}
-.form-container {
+} */
+/* .form-container {
   padding: 10px;
   max-width: 20rem;
   border-radius: 5px;
+} */
+.container {
+  padding: "20px";
 }
-
 /* NavBar */
 .home,
 .create-account,
@@ -69,7 +68,7 @@
 .login:hover .page-description {
   opacity: 1;
 }
-.nav-link {
+.navbar-nav .nav-link {
   color: white;
 }
 .nav-link:hover {
@@ -85,4 +84,7 @@
   left: 50%;
   top: 10%;
   transform: translateX(-50%);
+}
+#link {
+  color: white;
 }
