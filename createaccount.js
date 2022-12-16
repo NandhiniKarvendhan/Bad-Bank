@@ -81,7 +81,7 @@ function CreateAccount() {
             </>
           ) : (
             <>
-              <h5>Success! You have created an account</h5>
+              <h5>Success! You have created an account.</h5>
               <Form
                 type1="hidden"
                 type2="hidden"
