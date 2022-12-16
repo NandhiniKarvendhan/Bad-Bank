@@ -57,7 +57,7 @@ function Deposit() {
             </>
           ) : (
             <>
-              <h6>Success! You have deposited ${deposit}</h6>
+              <h6>Success! You have deposited ${deposit}.</h6>
               <h2>Balance is {total}</h2>
               <Form
                 type1="hidden"
