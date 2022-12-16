@@ -70,9 +70,9 @@ function Withdraw() {
             <>
               <h6>
                 Success! Withdraw was processed. <br /> You have withdrawn $
-                {withdraw}
+                {withdraw}.
               </h6>
-              <h2>Balance is ${total}</h2>
+              <h2>Balance is ${total}.</h2>
               <Form
                 type1="hidden"
                 type2="hidden"
