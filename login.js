@@ -53,7 +53,7 @@ function Login() {
             </>
           ) : (
             <>
-              <h5>Successfully! You have logged into your account</h5>
+              <h5>Successfully! You have logged into your account.</h5>
             </>
           )
         }
