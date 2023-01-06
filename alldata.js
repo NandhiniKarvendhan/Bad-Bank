@@ -1,11 +1,13 @@
 function AllData() {
   const ctx = React.useContext(UserContext);
+  let allUser = ctx.users;
+
   return (
     <div className="card-container">
       <Card
         bgcolor="info"
         header="All Data in Store"
-        body={<dl>{JSON.stringify(ctx.users)}</dl>}
+        body={<dl>{JSON.stringify(allUser)}</dl>}
       />
     </div>
   );
