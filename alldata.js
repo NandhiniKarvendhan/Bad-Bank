@@ -9,6 +9,7 @@ function AllData() {
         header="All Data in Store"
         body={<dl>{JSON.stringify(allUser)}</dl>}
       />
+      <Card bgcolor="info" body={<dl>{JSON.stringify(allUser)}</dl>} />
     </div>
   );
 }
