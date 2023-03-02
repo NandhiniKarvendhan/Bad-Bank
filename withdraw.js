@@ -45,7 +45,7 @@ function Withdraw() {
   return (
     <div className="card-container">
       <Card
-        bgcolor={show ? "secondary" : "success"}
+        bgcolor="success"
         txtcolor="white"
         header="Withdraw"
         body={
