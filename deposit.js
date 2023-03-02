@@ -34,7 +34,7 @@ function Deposit() {
   return (
     <div className="card-container">
       <Card
-        bgcolor={show ? "secondary" : "success"}
+        bgcolor={show ? "warning" : "success"}
         txtcolor="white"
         header="Deposit"
         body={
