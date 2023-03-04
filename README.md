@@ -12,6 +12,14 @@ To get started with this project, please:
 2. Start a local server
 3. Open index.html
 
+## Technology
+
+React
+Bootstrap
+Node js
+Docker
+MongoDB
+
 ## License information
 
 MIT License
