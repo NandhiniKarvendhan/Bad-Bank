@@ -1,0 +1,90 @@
+/* .mb-3 {
+  padding: 10px;
+} */
+/* .form-control {
+  max-width: 14rem;
+} */
+/* .form-header {
+  font-size: 46px;
+  font-weight: 1000px;
+  margin: 10px;
+} */
+/* .form-container {
+  padding: 10px;
+  max-width: 20rem;
+  border-radius: 5px;
+} */
+.container {
+  padding: "20px";
+}
+/* NavBar */
+.home,
+.create-account,
+.deposit,
+.withdraw,
+.all-data,
+.login {
+  position: relative;
+}
+.page-description {
+  position: absolute;
+  z-index: 100;
+  background-color: rgb(169, 166, 166);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+.home .page-description,
+.create-account .page-description {
+  bottom: -10px;
+  left: 19px;
+}
+.login .page-description {
+  bottom: -40px;
+  left: 12px;
+}
+.deposit .page-description {
+  bottom: -25px;
+  left: 15px;
+  width: 70px;
+}
+.withdraw .page-description {
+  bottom: -25px;
+  left: 19px;
+}
+.all-data .page-description {
+  bottom: -55px;
+  left: 19px;
+}
+.home:hover .page-description,
+.create-account:hover .page-description,
+.deposit:hover .page-description,
+.withdraw:hover .page-description,
+.all-data:hover .page-description,
+.login:hover .page-description {
+  opacity: 1;
+}
+.navbar-nav .nav-link {
+  color: white;
+}
+.nav-link:hover {
+  color: black;
+}
+.nav-link:active {
+  color: white;
+}
+
+/* Home component */
+.card-container {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+}
+#link {
+  color: white;
+}
