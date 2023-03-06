@@ -9,16 +9,22 @@ Bad Bank is a front end banking application created during Post Graduate Certifi
 To get started with this project, please:
 
 1. Download or clone repo's files
-2. Start a local server
-3. Open index.html
+2. Run npm install in the terminal.
+3. Run node index.js.
+
+## Screenshots
+
+<img src='/img/createAccount.png'/>
 
 ## Technology
 
-React
-Bootstrap
-Node js
-Docker
-MongoDB
+1. Bootstrap
+2. React
+3. Node js
+4. Docker
+5. MongoDB
+
+## Features
 
 ## License information
 
