@@ -14,7 +14,7 @@ To get started with this project, please:
 
 ## Screenshots
 
-<img src='/img/createAccount.png'/>
+<img src='/img/createAccount.png' alt="Bad Bank" style="height: 100px; width:100px;"/>
 
 ## Technology
 
