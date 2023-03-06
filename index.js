@@ -1,36 +1,19 @@
-function Spa() {
-  return (
-    <HashRouter>
-      <NavBar />
-      <UserContext.Provider
-        value={{
-          users: [
-            {
-              name: "Nandhu",
-              email: "nandhu@mit.edu",
-              password: "secret",
-              balance: 100,
-            },
-            {
-              name: "Madhivadhani",
-              email: "madhu@mit.edu",
-              password: "madhivathani@1",
-              balance: 500,
-            },
-          ],
-        }}
-      >
-        <div className="container">
-          <Route path="/" exact component={Home}></Route>
-          <Route path="/CreateAccount" component={CreateAccount}></Route>
-          <Route path="/Login" component={Login}></Route>
-          <Route path="/Deposit" component={Deposit}></Route>
-          <Route path="/Withdraw" component={Withdraw}></Route>
-          <Route path="/AllData" component={AllData}></Route>
-        </div>
-      </UserContext.Provider>
-    </HashRouter>
-  );
-}
+var express = require("express");
+var app = express();
+var cors = require("cors");
 
-ReactDOM.render(<Spa />, document.getElementById("root"));
+// used to serve static files from public directory
+app.use(express.static("public"));
+app.use(cors());
+
+app.get("/account/create/:name/:email/:password", (req, res) => {
+  console.log(req.params);
+  const name = req.params.name;
+  const email = req.params.email;
+  const password = req.params.password;
+  res.send({ name, email, password, balance: 0 });
+});
+
+app.listen(3000, () => {
+  console.log("Running on port 3000!");
+});
