@@ -26,7 +26,7 @@ function NavBar() {
               <a className="nav-link" href="#/Deposit">
                 Deposit
               </a>
-              <div className="page-description">Deposit yourmoney</div>
+              <div className="page-description">Deposit your money</div>
             </li>
 
             <li className="nav-item withdraw">
