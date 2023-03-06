@@ -15,7 +15,8 @@
   border-radius: 5px;
 } */
 .container {
-  padding: "20px";
+  margin: 50px;
+  padding: 50px;
 }
 /* NavBar */
 .home,
