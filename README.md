@@ -1,6 +1,8 @@
 # BAD BANK
 
-Bad Bank is a front end banking application created during Post Graduate Certificate in Full Stack Development with MERN conducted by MIT xPRO.
+![](https://github.com/NandhiniKarvendhan/Bad-Bank/blob/main/img/Badbank.gif)
+
+Bad Bank is a banking application created during Post Graduate Certificate in Full Stack Development with MERN conducted by MIT xPRO.
 
 ## [Demo](http://nandhini-kannanbankingapplication.s3-website.ap-south-1.amazonaws.com/#/)
 
@@ -14,7 +16,7 @@ To get started with this project, please:
 
 ## Screenshots
 
-<img src='/img/createAccount.png' alt="Bad Bank" style="height: 100px; width:100px;"/>
+<img src='/img/createAccount.png' alt="Bad Bank"/>
 
 ## Technology
 
