@@ -19,14 +19,25 @@ function create(name, email, password) {
   });
 }
 
+function find(email) {
+  return new Promise((resolve, reject) => {
+    const customer = db
+      .collection("accountHolders")
+      .find({ email: email })
+      .toArray(function (err, docs) {
+        err ? reject(err) : resolve(docs);
+      });
+  });
+}
 function all() {
   return new Promise((resolve, reject) => {
-    const holders = db
-      .collection("accountHolders")
-      .find({})
-      .then((doc) => resolve(doc))
-      .catch((err) => reject(err));
+    const holders = db.collection("accountHolders").find({});
+    console.log(
+      holders.toArray(function (err, result) {
+        err ? reject(err) : resolve(result);
+      })
+    );
   });
 }
 
-module.exports = { create, all };
+module.exports = { create, find, all };
