@@ -1,15 +1,18 @@
 function AllData() {
-  const ctx = React.useContext(UserContext);
-  let allUser = ctx.users;
+  const [data, setData] = React.useState("");
+
+  React.useEffect(() => {
+    fetch("/account/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(JSON.stringify(data));
+        console.log(data);
+      });
+  }, []);
 
   return (
     <div className="card-container">
-      <Card
-        bgcolor="info"
-        header="All Data in Store"
-        body={<dl>{JSON.stringify(allUser[0])}</dl>}
-      />
-      <Card bgcolor="info" body={<dl>{JSON.stringify(allUser[1])}</dl>} />
+      <Card bgcolor="info" header="All Data in Store" body={data} />
     </div>
   );
 }
