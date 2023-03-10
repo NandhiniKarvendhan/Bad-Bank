@@ -2,7 +2,7 @@
 
 ![](https://github.com/NandhiniKarvendhan/Bad-Bank/blob/main/img/Badbank.gif)
 
-Bad Bank is a banking application created during Post Graduate Certificate in Full Stack Development with MERN conducted by MIT xPRO.
+Bad Bank is a three tier banking application created during Post Graduate Certificate in Full Stack Development with MERN conducted by MIT xPRO.
 
 ## [Demo](http://nandhini-kannanbankingapplication.s3-website.ap-south-1.amazonaws.com/#/)
 
@@ -27,6 +27,12 @@ To get started with this project, please:
 5. MongoDB
 
 ## Features
+
+Create Account - To create new account for user
+Login - To login into the account
+Deposit - To deposit money into your account
+Withdraw - To withdraw money from your account
+AllData - To show all data of the users.
 
 ## License information
 
