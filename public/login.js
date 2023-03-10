@@ -3,14 +3,27 @@ function Login() {
   const [password, setPassword] = React.useState("");
   const [show, setShow] = React.useState(true);
   const [disabled, setDisabled] = React.useState(true);
-  const ctx = React.useContext(UserContext);
+  const [status, setStatus] = React.useState("");
+
   function handleSubmit() {
     console.log(email, password);
     if (!password) {
       alert("please enter password");
       setDisabled(false);
     }
-    ctx.users.push({ email, password, balance: 100 });
+    fetch(`/account/login/${email}/${password}`)
+      .then((response) => response.text())
+      .then((text) => {
+        try {
+          const data = JSON.parse(text);
+
+          console.log("JSON:", data);
+          setStatus(" ");
+        } catch (err) {
+          console.log("err:", text);
+          setStatus(text);
+        }
+      });
     setShow(false);
   }
   return (
@@ -45,7 +58,7 @@ function Login() {
               ></Form>
               <br />
               <h6>
-                Don't have an account?&nbsp;
+                Don't have an account?
                 <a id="link" href="#CreateAccount">
                   Sign up
                 </a>
@@ -53,7 +66,7 @@ function Login() {
             </>
           ) : (
             <>
-              <h5>Successfully! You have logged into your account.</h5>
+              <h5>{status}</h5>
             </>
           )
         }
