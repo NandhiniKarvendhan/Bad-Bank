@@ -28,11 +28,11 @@ To get started with this project, please:
 
 ## Features
 
-Create Account - To create new account for user
-Login - To login into the account
-Deposit - To deposit money into your account
-Withdraw - To withdraw money from your account
-AllData - To show all data of the users.
+- Create Account - To create new account for user
+- Login - To login into the account
+- Deposit - To deposit money into your account
+- Withdraw - To withdraw money from your account
+- AllData - To show all data of the users.
 
 ## License information
 
