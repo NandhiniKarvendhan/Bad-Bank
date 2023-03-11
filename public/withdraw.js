@@ -1,6 +1,6 @@
 function Withdraw() {
   const ctx = React.useContext(UserContext);
-  let amt = JSON.stringify(ctx.users[1]["balance"]);
+  let amt = JSON.stringify(ctx.users[0]["balance"]);
   const [disabled, setDisabled] = React.useState(true);
   const [withdraw, setWithdraw] = React.useState("");
   const [total, setTotal] = React.useState(amt);
