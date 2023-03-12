@@ -29,6 +29,22 @@ function find(email) {
       });
   });
 }
+
+function update(email, amount) {
+  return new Promise((resolve, reject) => {
+    const customer = db
+      .collection("accountHolders")
+      .findOneAndUpdate(
+        { email: email },
+        { $inc: { balance: amount } },
+        { returnNewDocument: false },
+        function (err, docs) {
+          err ? reject(err) : resolve(docs);
+        }
+      );
+  });
+}
+
 function all() {
   return new Promise((resolve, reject) => {
     const holders = db.collection("accountHolders").find({});
@@ -40,4 +56,4 @@ function all() {
   });
 }
 
-module.exports = { create, find, all };
+module.exports = { create, find, update, all };
