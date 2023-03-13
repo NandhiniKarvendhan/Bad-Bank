@@ -35,6 +35,13 @@ app.get("/account/login/:email/:password", (req, res) => {
     }
   });
 });
+app.get("/account/update/:email/:amount", (req, res) => {
+  var amount = Number(req.params.amount);
+  dal.update(req.params.email, amount).then((response) => {
+    res.send(response);
+  });
+});
+
 app.get("/account/all", (req, res) => {
   dal.all().then((user) => {
     console.log(user);
