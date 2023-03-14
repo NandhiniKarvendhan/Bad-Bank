@@ -1,8 +1,7 @@
 function Deposit() {
-  // let amt = JSON.stringify(ctx.users[0]["balance"]);
   const [email, setEmail] = React.useState("");
   const [disabled, setDisabled] = React.useState(true);
-  // const [deposit, setDeposit] = React.useState("");
+  const [status, setStatus] = React.useState("");
   const [amount, setAmount] = React.useState();
   const [show, setShow] = React.useState(true);
   // const handleChange = (event) => {
@@ -25,22 +24,20 @@ function Deposit() {
       .then((text) => {
         try {
           const data = JSON.parse(text);
-
-          console.log("JSON:", data);
-          // setStatus(" ");
+          console.log("JSON:", data.value);
+          setStatus(data.value);
         } catch (err) {
           console.log("err:", text);
-          // setStatus(text);
+          setStatus(text);
         }
       });
     event.preventDefault();
     setShow(false);
-    // ctx.users.push({ balance: Number(deposit) + Number(total) });
   };
 
   function clearForm() {
     setEmail("");
-
+    setAmount("");
     setShow(true);
     setDisabled(true);
   }
@@ -53,7 +50,6 @@ function Deposit() {
         body={
           show ? (
             <>
-              {/* <h2>Balance is ${total}</h2> */}
               <Form
                 label1="Email"
                 type1="input"
@@ -80,7 +76,7 @@ function Deposit() {
             </>
           ) : (
             <>
-              <h6>Success! You have deposited ${amount}.</h6>
+              <h6>{status}</h6>
               {/* <h2>Balance is {total}</h2> */}
               <Form
                 type1="hidden"
