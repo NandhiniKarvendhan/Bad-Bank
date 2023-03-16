@@ -3,36 +3,27 @@ function Withdraw() {
   const [withdraw, setWithdraw] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [show, setShow] = React.useState(true);
-
-  // const handleChange = (event) => {
-  //   setWithdraw(event.target.value);
-  //   event.preventDefault();
-  //   if (Number(event.target.value) > Number(total)) {
-  //     setWithdraw("");
-  //     setDisabled(true);
-  //     return alert("Balance is low");
-  //   } else {
-  //     setDisabled(false);
-  //   }
-  //   if (/^\d+$/.test(event.target.value) == true) {
-  //     setWithdraw(event.target.value);
-  //     event.preventDefault();
-  //   } else {
-  //     setWithdraw("");
-  //     return alert("Enter positive Number");
-  //   }
-  // };
+  const [status, setStatus] = React.useState("");
 
   const handleSubmit = (event) => {
     {
-      // setTotal(Number(total) - Number(withdraw));
-      console.log(Number(withdraw));
-      // console.log(Number(total));
-
+      // console.log(Number(withdraw));
+      fetch(`/account/update/${email}/-${withdraw}`)
+        .then((response) => response.text())
+        .then((text) => {
+          try {
+            const data = JSON.parse(text);
+            console.log("JSON:", data);
+            console.log(data["value"]);
+            setStatus(JSON.stringify(data.value));
+          } catch (err) {
+            console.log("err:", text);
+            setStatus(text);
+          }
+        });
       event.preventDefault();
       setShow(false);
     }
-    // ctx.users.push({ balance: Number(total) - Number(withdraw) });
   };
 
   function clearForm() {
@@ -64,7 +55,10 @@ function Withdraw() {
                 id2="amount"
                 placeholder2="Enter amount.."
                 value2={withdraw}
-                // onChange2={handleChange}
+                onChange2={(e) => {
+                  setWithdraw(e.currentTarget.value);
+                  setDisabled(false);
+                }}
                 type3="hidden"
                 onClick={handleSubmit}
                 disabled={disabled}
@@ -73,11 +67,8 @@ function Withdraw() {
             </>
           ) : (
             <>
-              <h6>
-                Success! Withdraw was processed. <br /> You have withdrawn $
-                {withdraw}.
-              </h6>
-              {/* <h2>Balance is ${total}.</h2> */}
+              <h6>{status}</h6>
+
               <Form
                 type1="hidden"
                 type2="hidden"
