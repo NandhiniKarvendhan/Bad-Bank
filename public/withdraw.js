@@ -18,7 +18,7 @@ function Withdraw() {
             setStatus(JSON.stringify(data.value));
           } catch (err) {
             console.log("err:", text);
-            setStatus(text);
+            setStatus("Withdraw failed");
           }
         });
       event.preventDefault();
