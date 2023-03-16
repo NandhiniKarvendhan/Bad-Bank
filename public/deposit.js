@@ -18,17 +18,16 @@ function Deposit() {
   // };
 
   const handleSubmit = (event) => {
-    // setTotal(Number(total) + Number(deposit));
     fetch(`/account/update/${email}/${amount}`)
       .then((response) => response.text())
       .then((text) => {
         try {
           const data = JSON.parse(text);
           console.log("JSON:", data.value);
-          setStatus(data.value);
+          setStatus(JSON.stringify(data.value));
         } catch (err) {
           console.log("err:", text);
-          setStatus(text);
+          setStatus("deposit failed");
         }
       });
     event.preventDefault();
@@ -77,7 +76,6 @@ function Deposit() {
           ) : (
             <>
               <h6>{status}</h6>
-              {/* <h2>Balance is {total}</h2> */}
               <Form
                 type1="hidden"
                 type2="hidden"
