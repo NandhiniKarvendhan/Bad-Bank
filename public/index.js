@@ -9,6 +9,7 @@ function Spa() {
         <Route path="/Login" component={Login}></Route>
         <Route path="/Deposit" component={Deposit}></Route>
         <Route path="/Withdraw" component={Withdraw}></Route>
+        <Route path="/Balance" component={Balance}></Route>
         <Route path="/AllData" component={AllData}></Route>
       </div>
     </HashRouter>
