@@ -35,6 +35,12 @@ function NavBar() {
               </a>
               <div className="page-description">Withdraw your money</div>
             </li>
+            <li className="nav-item balance">
+              <a className="nav-link" href="#/Balance">
+                Balance
+              </a>
+              <div className="page-description">Check your balance</div>
+            </li>
             <li className="nav-item all-data">
               <a className="nav-link" href="#/AllData">
                 AllData
