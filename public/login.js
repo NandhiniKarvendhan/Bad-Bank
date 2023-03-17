@@ -57,8 +57,8 @@ function Login() {
               ></Form>
               <br />
               <h6>
-                Don't have an account?
-                <a id="link" href="#CreateAccount">
+                Don't have an account?{" "}
+                <a id="link1" href="#CreateAccount">
                   Sign up
                 </a>
               </h6>
