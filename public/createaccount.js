@@ -98,7 +98,10 @@ function CreateAccount() {
         }
       ></Card>
       <h6>
-        Already have an account? <a href="#Login">Log in</a>
+        Already have an account?{" "}
+        <a id="link2" href="#Login">
+          Log in
+        </a>
       </h6>
     </div>
   );
