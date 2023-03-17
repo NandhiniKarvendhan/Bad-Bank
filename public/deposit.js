@@ -4,18 +4,6 @@ function Deposit() {
   const [status, setStatus] = React.useState("");
   const [amount, setAmount] = React.useState();
   const [show, setShow] = React.useState(true);
-  // const handleChange = (event) => {
-  //   setDeposit(event.target.value);
-  //   event.preventDefault();
-  //   setDisabled(false);
-  //   if (/^\d+$/.test(event.target.value) == true) {
-  //     setDeposit(event.target.value);
-  //     event.preventDefault();
-  //   } else {
-  //     setDeposit("");
-  //     return alert("Enter positive Number");
-  //   }
-  // };
 
   const handleSubmit = (event) => {
     fetch(`/account/update/${email}/${amount}`)
@@ -23,8 +11,12 @@ function Deposit() {
       .then((text) => {
         try {
           const data = JSON.parse(text);
-          console.log("JSON:", data.value);
-          setStatus(JSON.stringify(data.value));
+          // console.log("JSON:", data.value);
+          // console.log(JSON.stringify(data.value["balance"]));
+          setStatus(
+            `Success! You have deposited ${amount} 
+            `
+          );
         } catch (err) {
           console.log("err:", text);
           setStatus("deposit failed");
@@ -75,7 +67,13 @@ function Deposit() {
             </>
           ) : (
             <>
-              <h6>{status}</h6>
+              <h6>{status}</h6> <br />
+              <h6>
+                Check{" "}
+                <a id="link1" href="#Balance">
+                  balance
+                </a>
+              </h6>
               <Form
                 type1="hidden"
                 type2="hidden"
