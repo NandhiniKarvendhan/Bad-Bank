@@ -8,14 +8,20 @@ function Withdraw() {
   const handleSubmit = (event) => {
     {
       // console.log(Number(withdraw));
+
       fetch(`/account/update/${email}/-${withdraw}`)
         .then((response) => response.text())
         .then((text) => {
           try {
             const data = JSON.parse(text);
-            console.log("JSON:", data);
-            console.log(data["value"]);
-            setStatus(JSON.stringify(data.value));
+            // console.log("JSON:", data);
+            // console.log(data["value"]);
+            // let balanceLink = <a id='link" href="#Balance"> balance </a>;
+            if (withdraw <= data.value["balance"]) {
+              setStatus(`Success! You have withdrawn $${withdraw}.`);
+            } else {
+              setStatus("Withdraw failed! Insufficient balance.");
+            }
           } catch (err) {
             console.log("err:", text);
             setStatus("Withdraw failed");
@@ -68,7 +74,13 @@ function Withdraw() {
           ) : (
             <>
               <h6>{status}</h6>
-
+              <br />
+              <h6>
+                Check{" "}
+                <a id="link1" href="#Balance">
+                  balance
+                </a>
+              </h6>
               <Form
                 type1="hidden"
                 type2="hidden"
