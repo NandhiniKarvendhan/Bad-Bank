@@ -24,7 +24,8 @@
 .deposit,
 .withdraw,
 .all-data,
-.login {
+.login,
+.balance {
   position: relative;
 }
 .page-description {
@@ -49,11 +50,15 @@
   left: 12px;
 }
 .deposit .page-description {
-  bottom: -25px;
+  bottom: -40px;
   left: 15px;
   width: 70px;
 }
 .withdraw .page-description {
+  bottom: -25px;
+  left: 19px;
+}
+.balance .page-description {
   bottom: -25px;
   left: 19px;
 }
@@ -66,7 +71,8 @@
 .deposit:hover .page-description,
 .withdraw:hover .page-description,
 .all-data:hover .page-description,
-.login:hover .page-description {
+.login:hover .page-description,
+.balance:hover .page-description {
   opacity: 1;
 }
 .navbar-nav .nav-link {
@@ -86,6 +92,9 @@
   top: 10%;
   transform: translateX(-50%);
 }
-#link {
+#link1 {
   color: white;
+}
+#link2 {
+  color: black;
 }
