@@ -11,12 +11,9 @@ function Deposit() {
       .then((text) => {
         try {
           const data = JSON.parse(text);
-          // console.log("JSON:", data.value);
-          // console.log(JSON.stringify(data.value["balance"]));
-          setStatus(
-            `Success! You have deposited ${amount} 
-            `
-          );
+          console.log("JSON:", data.value);
+          console.log(JSON.stringify(data.value["balance"]));
+          setStatus(`Success! You have deposited $${amount}.`);
         } catch (err) {
           console.log("err:", text);
           setStatus("deposit failed");
