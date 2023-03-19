@@ -15,9 +15,9 @@ function Login() {
       .then((response) => response.text())
       .then((text) => {
         try {
-          const data = JSON.parse(text);
-          console.log("JSON:", data);
-          setStatus(" ");
+          // const data = JSON.parse(text);
+          // console.log("JSON:", data);
+          setStatus(text);
         } catch (err) {
           console.log("err:", text);
           setStatus(text);
