@@ -6,6 +6,18 @@ function Balance() {
 
   const handleSubmit = () => {
     console.log(email);
+    fetch(`/account/balance/${email}`)
+      .then((response) => response.text())
+      .then((text) => {
+        try {
+          // const data = JSON.parse(text);
+          console.log(text);
+          setStatus(text);
+        } catch (err) {
+          console.log("err:", text);
+          setStatus(text);
+        }
+      });
     setShow(false);
   };
   return (
@@ -28,7 +40,7 @@ function Balance() {
                 }}
                 type2="hidden"
                 type3="hidden"
-                nClick={handleSubmit}
+                onClick={handleSubmit}
                 button="Check Balance"
               ></Form>
             </>
@@ -36,31 +48,27 @@ function Balance() {
             <>
               <h6>{status}</h6>
               <br />
-              <h6>
+              {/* <h6>
                 Check{" "}
                 <a id="link1" href="#Balance">
                   balance
                 </a>
-              </h6>
-              <Form
-                type1="hidden"
-                type2="hidden"
-                type3="hidden"
-                onClick={clearForm}
-                button="Withdraw Again"
-              ></Form>
+              </h6> */}
             </>
           )
         }
       ></Card>
-
-      <a id="link2" href="#Deposit">
-        Deposit
-      </a>
+      <button>
+        <a id="link1" href="#Deposit">
+          Deposit &nbsp; &#8811;
+        </a>
+      </button>
       <br />
-      <a id="link2" href="#Withdraw">
-        Withdraw
-      </a>
+      <button>
+        <a id="link1" href="#Withdraw">
+          Withdraw &nbsp; &#8811;
+        </a>
+      </button>
     </div>
   );
 }
