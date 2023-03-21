@@ -9,15 +9,14 @@ function Withdraw() {
     {
       // console.log(Number(withdraw));
 
-      fetch(`/account/update/${email}/-${withdraw}`)
+      fetch(`account/find/${email}`)
         .then((response) => response.text())
         .then((text) => {
           try {
             const data = JSON.parse(text);
-            // console.log("JSON:", data);
-            // console.log(data["value"]);
-            // let balanceLink = <a id='link" href="#Balance"> balance </a>;
-            if (withdraw <= data.value["balance"]) {
+            console.log(data);
+            if (withdraw <= data[0]["balance"]) {
+              handleChange();
               setStatus(`Success! You have withdrawn $${withdraw}.`);
             } else {
               setStatus("Withdraw failed! Insufficient balance.");
@@ -27,6 +26,19 @@ function Withdraw() {
             setStatus("Withdraw failed");
           }
         });
+
+      const handleChange = () => {
+        fetch(`/account/update/${email}/${-withdraw}`)
+          .then((response) => response.text())
+          .then((text) => {
+            try {
+              const data = JSON.parse(text);
+            } catch (err) {
+              console.log("err:", text);
+              setStatus("Withdraw failed");
+            }
+          });
+      };
       event.preventDefault();
       setShow(false);
     }
