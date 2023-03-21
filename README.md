@@ -32,6 +32,7 @@ To get started with this project, please:
 - Login - To login into the account
 - Deposit - To deposit money into your account
 - Withdraw - To withdraw money from your account
+- Balance - To check the balance from your account
 - AllData - To show all data of the users.
 
 ## License information
