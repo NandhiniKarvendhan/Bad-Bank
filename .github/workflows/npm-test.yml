@@ -25,6 +25,8 @@ jobs:
       - run: npm run build --if-present
 
       - run: npm test
+      env:
+          CI: true
 
   deploy:
     needs: build
