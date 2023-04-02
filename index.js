@@ -66,8 +66,8 @@ app.get("/account/all", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Running on port 3000!");
+app.listen(3005, () => {
+  console.log("Running on port 3005!");
 });
 const hello = () => "Hello World";
 console.log(hello());
