@@ -1,3 +1,4 @@
+var firebase = require("./config/firebase-config");
 function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
