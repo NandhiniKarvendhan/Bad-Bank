@@ -1,4 +1,3 @@
-var firebase = require("./config/firebase-config");
 function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -7,7 +6,22 @@ function Login() {
   const [status, setStatus] = React.useState("");
 
   function handleSubmit() {
+    const firebaseConfig = {
+      apiKey: "AIzaSyCbFsUiLoBW-iRpvMvtsEnS7l9YN2G13SA",
+      authDomain: "courso-ac2a0.firebaseapp.com",
+      databaseURL:
+        "https://courso-ac2a0-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "courso-ac2a0",
+      storageBucket: "courso-ac2a0.appspot.com",
+      messagingSenderId: "929018513987",
+      appId: "1:929018513987:web:52ee27ccee6c3add82a2f6",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
     console.log(email, password);
+    const auth = firebase.auth();
+    const promise = auth.signInWithEmailAndPassword(email, password);
+    promise.catch((e) => console.log(e.message));
     if (!password) {
       alert("please enter password");
       setDisabled(false);
