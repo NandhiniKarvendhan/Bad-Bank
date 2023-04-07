@@ -2,6 +2,15 @@ var express = require("express");
 var app = express();
 var cors = require("cors");
 var dal = require("./dal.js");
+var admin = require("firebase-admin");
+var serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL:
+    "https://courso-ac2a0-default-rtdb.asia-southeast1.firebasedatabase.app",
+});
+
 // used to serve static files from public directory
 app.use(express.static("public"));
 app.use(cors());
@@ -69,6 +78,3 @@ const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => {
   console.log("Running on port " + PORT + "!");
 });
-const hello = () => "Hello World";
-console.log(hello());
-exports.hello = hello;
