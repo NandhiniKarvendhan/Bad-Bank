@@ -12,7 +12,7 @@ To get started with this project, please:
 
 1. Download or clone repo's files
 2. Run npm install in the terminal.
-3. Run 'docker run -p 27017:27017 --name badbank -d mongo' in terminal.
+3. Move into the server folder, run npm install and run 'docker run -p 27017:27017 --name badbank -d mongo' in terminal.
 4. Run node index.js.
 
 ## Screenshots
