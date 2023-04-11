@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* .mb-3 {
+  padding: 10px;
+} */
+/* .form-control {
+  max-width: 14rem;
+} */
+/* .form-header {
+  font-size: 46px;
+  font-weight: 1000px;
+  margin: 10px;
+} */
+/* .form-container {
+  padding: 10px;
+  max-width: 20rem;
+  border-radius: 5px;
+} */
+.container {
+  margin: 50px;
+  padding: 50px;
+}
+/* NavBar */
+.home,
+.create-account,
+.deposit,
+.withdraw,
+.all-data,
+.login,
+.balance {
+  position: relative;
+}
+.page-description {
+  position: absolute;
+  z-index: 100;
+  background-color: rgb(169, 166, 166);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+.home .page-description,
+.create-account .page-description {
+  bottom: -10px;
+  left: 19px;
+}
+.login .page-description {
+  bottom: -40px;
+  left: 12px;
+}
+.deposit .page-description {
+  bottom: -40px;
+  left: 15px;
+  width: 70px;
+}
+.withdraw .page-description {
+  bottom: -25px;
+  left: 19px;
+}
+.balance .page-description {
+  bottom: -25px;
+  left: 19px;
+}
+.all-data .page-description {
+  bottom: -55px;
+  left: 19px;
+}
+.home:hover .page-description,
+.create-account:hover .page-description,
+.deposit:hover .page-description,
+.withdraw:hover .page-description,
+.all-data:hover .page-description,
+.login:hover .page-description,
+.balance:hover .page-description {
+  opacity: 1;
+}
+.navbar-nav .nav-link {
+  color: white;
+}
+.nav-link:hover {
+  color: black;
+}
+.nav-link:active {
+  color: white;
+}
+
+/* Home component */
+.card-container {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+}
+#link1 {
+  color: white;
+  font-style: italic;
+  font-weight: 700;
+}
+#link2 {
+  color: black;
+  font-style: italic;
+  font-weight: 700;
+}
+button {
+  border: none;
+  border-radius: 4%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(0, 51, 102);
+  color: white;
+}
+
+/* NavBar background color change while hovering*/
+.navbar li:hover {
+  background-color: #01b1d4;
+}
