@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var cors = require("cors");
 var dal = require("./dal.js");
+const admin = require("./config/firebase-config");
 
 // used to serve static files from build directory
 app.use(express.static("build"));
@@ -27,6 +28,25 @@ app.get("/account/find/:email", (req, res) => {
   });
 });
 app.get("/account/login/:email/:password", (req, res) => {
+  const idToken = req.headers.authorization;
+  // console.log("header:", idToken);
+
+  if (!idToken) {
+    res.status(401).send();
+    return;
+  }
+
+  admin
+    .auth()
+    .verifyIdToken(idToken)
+    .then(function (decodedToken) {
+      console.log("decodedToken:", decodedToken);
+    })
+    .catch(function (error) {
+      console.log("error:", error);
+      res.status(401).send("Token invalid!");
+    });
+
   dal.find(req.params.email).then((user) => {
     if (user.length > 0) {
       if (user[0].password === req.params.password) {
