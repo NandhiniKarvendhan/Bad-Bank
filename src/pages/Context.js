@@ -30,7 +30,6 @@ export function Form(props) {
         value={props.value1}
         onChange={props.onChange1}
       ></input>
-
       <label>{props.label2}</label>
       <input
         type={props.type2}
@@ -40,7 +39,6 @@ export function Form(props) {
         value={props.value2}
         onChange={props.onChange2}
       ></input>
-
       <label>{props.label3}</label>
       <input
         type={props.type3}
@@ -59,6 +57,7 @@ export function Form(props) {
       >
         {props.button}
       </button>
+      <br />
     </form>
   );
 }
