@@ -8,7 +8,27 @@ const admin = require("./config/firebase-config");
 app.use(express.static("build"));
 app.use(cors());
 
+// To create account
 app.get("/account/create/:name/:email/:password", (req, res) => {
+  const idToken = req.headers.authorization;
+  console.log("header:", idToken);
+
+  if (!idToken) {
+    res.status(401).send();
+    return;
+  }
+
+  admin
+    .auth()
+    .verifyIdToken(idToken)
+    .then(function (decodedToken) {
+      console.log("decodedToken:", decodedToken);
+    })
+    .catch(function (error) {
+      console.log("error:", error);
+      res.status(401).send("Token invalid!");
+    });
+
   dal.find(req.params.email).then((user) => {
     if (user.length > 0) {
       res.send("The user already exists, Email is already taken.");
@@ -27,6 +47,8 @@ app.get("/account/find/:email", (req, res) => {
     res.send(user);
   });
 });
+
+// To login with email and password
 app.get("/account/login/:email/:password", (req, res) => {
   const idToken = req.headers.authorization;
   // console.log("header:", idToken);
@@ -50,7 +72,6 @@ app.get("/account/login/:email/:password", (req, res) => {
   dal.find(req.params.email).then((user) => {
     if (user.length > 0) {
       if (user[0].password === req.params.password) {
-        console.log(user);
         res.send("Login successful! Welcome back " + user[0].name + ".");
       } else {
         res.send("Login failed: wrong password");
@@ -60,6 +81,24 @@ app.get("/account/login/:email/:password", (req, res) => {
     }
   });
 });
+
+// Google login
+app.get("/account/googleLogin/:name/:email/:password", (req, res) => {
+  dal.find(req.params.email).then((user) => {
+    if (user.length > 0) {
+      // res.send("The user already exists, Email is already taken.");
+    } else {
+      dal
+        .create(req.params.name, req.params.email, req.params.password)
+        .then((user) => {
+          console.log(user);
+          res.send(user);
+        });
+    }
+  });
+});
+
+// Deposit or withdraw amount
 app.get("/account/update/:email/:amount", (req, res) => {
   var amount = Number(req.params.amount);
   dal.update(req.params.email, amount).then((response) => {
@@ -67,11 +106,11 @@ app.get("/account/update/:email/:amount", (req, res) => {
   });
 });
 
+// Check balance
 app.get("/account/balance/:email", (req, res) => {
   dal.find(req.params.email).then((user) => {
     console.log(user);
     if (user.length > 0) {
-      console.log(user.length);
       res.send(
         "Hi " + user[0].name + ". " + "Your balance is " + user[0].balance
       );
@@ -80,6 +119,19 @@ app.get("/account/balance/:email", (req, res) => {
     }
   });
 });
+
+// To get data of logined user
+app.get("/account/:email", (req, res) => {
+  dal.find(req.params.email).then((user) => {
+    if (user.length > 0) {
+      res.send(user);
+    } else {
+      res.send("Check your email address.");
+    }
+  });
+});
+
+// To get all data
 app.get("/account/all", (req, res) => {
   dal.all().then((user) => {
     console.log(user);
