@@ -30,6 +30,15 @@ function find(email) {
   });
 }
 
+function remove(email) {
+  return new Promise((resolve, reject) => {
+    const customer = db
+      .collection("accountHolders")
+      .findOneAndDelete({ email: email }, function (err, docs) {
+        err ? reject(err) : resolve(docs);
+      });
+  });
+}
 function update(email, amount) {
   return new Promise((resolve, reject) => {
     const customer = db
@@ -45,15 +54,17 @@ function update(email, amount) {
   });
 }
 
-function all() {
-  return new Promise((resolve, reject) => {
-    const holders = db.collection("accountHolders").find({});
-    console.log(
-      holders.toArray(function (err, result) {
-        err ? reject(err) : resolve(result);
-      })
-    );
-  });
-}
+// function all() {
+//   return new Promise((resolve, reject) => {
+//     const holders = db
+//       .collection("accountHolders")
+//       .find({})
+//       .toArray(function (err, result) {
+//         err ? reject(err) : resolve(result);
+//         console.log(err);
+//         console.log(result);
+//       });
+//   });
+// }
 
-module.exports = { create, find, update, all };
+module.exports = { create, find, update, remove };

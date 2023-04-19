@@ -42,9 +42,16 @@ app.get("/account/create/:name/:email/:password", (req, res) => {
     }
   });
 });
-app.get("/account/find/:email", (req, res) => {
-  dal.find(req.params.email).then((user) => {
-    res.send(user);
+// app.get("/account/find/:email", (req, res) => {
+//   dal.find(req.params.email).then((user) => {
+//     res.send(user);
+//   });
+// });
+
+// delete the account
+app.get("/account/remove/:email", (req, res) => {
+  dal.remove(req.params.email).then((user) => {
+    res.send(`Hi ${req.params.email}. Your account is deleted!`);
   });
 });
 
@@ -84,6 +91,25 @@ app.get("/account/login/:email/:password", (req, res) => {
 
 // Google login
 app.get("/account/googleLogin/:name/:email/:password", (req, res) => {
+  const idToken = req.headers.authorization;
+  console.log("header:", idToken);
+
+  if (!idToken) {
+    res.status(401).send();
+    return;
+  }
+
+  admin
+    .auth()
+    .verifyIdToken(idToken)
+    .then(function (decodedToken) {
+      console.log("decodedToken:", decodedToken);
+    })
+    .catch(function (error) {
+      console.log("error:", error);
+      res.status(401).send("Token invalid!");
+    });
+
   dal.find(req.params.email).then((user) => {
     if (user.length > 0) {
       // res.send("The user already exists, Email is already taken.");
@@ -102,7 +128,7 @@ app.get("/account/googleLogin/:name/:email/:password", (req, res) => {
 app.get("/account/update/:email/:amount", (req, res) => {
   var amount = Number(req.params.amount);
   dal.update(req.params.email, amount).then((response) => {
-    res.send(response);
+    res.send(`Your balance is updated by ${req.params.amount}.`);
   });
 });
 
@@ -131,13 +157,13 @@ app.get("/account/:email", (req, res) => {
   });
 });
 
-// To get all data
-app.get("/account/all", (req, res) => {
-  dal.all().then((user) => {
-    console.log(user);
-    res.send(user);
-  });
-});
+// // To get all data
+// app.get("/account/all", (req, res) => {
+//   dal.all().then((user) => {
+//     console.log(user);
+//     res.send(user);
+//   });
+// });
 app.listen(3000, () => {
   console.log("Running on port " + 3000 + "!");
 });
