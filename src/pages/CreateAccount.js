@@ -1,5 +1,7 @@
-import { Card, Form } from "./Context.js";
+import { Card, Form } from "../components/context/Context.js";
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, useAuth } from "../config/firebase-config";
 export function CreateAccount() {
   const [show, setShow] = useState(true);
   const [status, setStatus] = useState("");
@@ -7,6 +9,7 @@ export function CreateAccount() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const currentUser = useAuth();
 
   function clearForm() {
     setName("");
@@ -30,16 +33,39 @@ export function CreateAccount() {
   }
 
   function handleCreate() {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCred) => {
+        if (userCred) {
+          console.log(userCred);
+          console.log(userCred["_tokenResponse"]["idToken"]);
+          var idToken = userCred["_tokenResponse"]["idToken"];
+          fetch(`/account/create/${name}/${email}/${password}`, {
+            method: "GET",
+            headers: {
+              Authorization: idToken,
+            },
+          })
+            .then((response) => response.text())
+            .then((text) => {
+              try {
+                setStatus(text);
+              } catch (err) {
+                console.log("err:", text);
+                setStatus(text);
+              }
+            });
+        } else {
+          console.warn("There is currently no logged in user.");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(name, email, password);
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
-    const url = `/account/create/${name}/${email}/${password}`;
-    (async () => {
-      var res = await fetch(url);
-      var data = await res.json();
-      console.log(data);
-    })();
+
     setShow(false);
   }
 
@@ -87,7 +113,10 @@ export function CreateAccount() {
             </>
           ) : (
             <>
-              <h5>Success! You have created an account.</h5>
+              <h6>
+                Success {name}! <br />
+                You have created an account.{currentUser?.email}
+              </h6>
               <Form
                 type1="hidden"
                 type2="hidden"

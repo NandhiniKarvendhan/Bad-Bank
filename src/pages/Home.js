@@ -1,11 +1,12 @@
-import { Card } from "./Context.js";
+import { Card } from "../components/context/Context.js";
 import bank from "./bank.png";
 export function Home() {
   return (
     <div className="card-container">
       <Card
+        className="custom-card"
         bgcolor="light"
-        txtcolor="black"
+        txtcolor="danger"
         header="BadBank Landing Module"
         title="Welcome to the bank"
         text="You can move around using the navigation bar."

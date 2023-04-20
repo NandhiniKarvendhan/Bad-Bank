@@ -1,10 +1,9 @@
-import { Card, Form } from "./Context.js";
+import { Card, Form } from "../components/context/Context.js";
 import { useState } from "react";
-
-// import { initializeApp } from "firebase/app";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../config/firebase-config";
+import { auth, useAuth } from "../config/firebase-config";
+
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,14 +11,9 @@ export function Login() {
   const [disabled, setDisabled] = useState(true);
   const [status, setStatus] = useState("");
   const [authentication, setAuthentication] = useState(false);
-  const [user, setUser] = useState({});
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-    // currentUser.getIdToken().then((idToken) => {
-    //   console.log("idToken:", idToken);
-    // });
-  });
+  const currentUser = useAuth();
+
   // login with Email and Password
   const handleSubmit = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -28,16 +22,6 @@ export function Login() {
           setAuthentication(true);
           console.log(userCred["_tokenResponse"]["idToken"]);
           const idToken = userCred["_tokenResponse"]["idToken"];
-          // async () => {
-          //   let response = await fetch("/account/login/${email}/${password}", {
-          //     method: "GET",
-          //     headers: {
-          //       Authorization: idToken,
-          //     },
-          //   });
-          //   let text = await response.text();
-          //   console.log("response:", response);
-          // };
           fetch(`/account/login/${email}/${password}`, {
             method: "GET",
             headers: {
@@ -47,8 +31,6 @@ export function Login() {
             .then((response) => response.text())
             .then((text) => {
               try {
-                // const data = JSON.parse(text);
-                // console.log("JSON:", data);
                 setStatus(text);
               } catch (err) {
                 console.log("err:", text);
@@ -67,23 +49,6 @@ export function Login() {
       alert("please enter password");
       setDisabled(false);
     }
-    // fetch(`/account/login/${email}/${password}`, {
-    //   method: "GET",
-    //   headers: {
-    //     Authorization: idToken,
-    //   },
-    // })
-    //   .then((response) => response.text())
-    //   .then((text) => {
-    //     try {
-    //       // const data = JSON.parse(text);
-    //       // console.log("JSON:", data);
-    //       setStatus(text);
-    //     } catch (err) {
-    //       console.log("err:", text);
-    //       setStatus(text);
-    //     }
-    //   });
     setShow(false);
   };
 
@@ -92,8 +57,30 @@ export function Login() {
     signInWithPopup(auth, new GoogleAuthProvider()).then((userCred) => {
       if (userCred) {
         setAuthentication(true);
+        console.log(userCred["_tokenResponse"]["idToken"]);
+        const idToken = userCred["_tokenResponse"]["idToken"];
+        const password = "none";
+        const name = userCred["user"]["displayName"];
+        const email = userCred["user"]["email"];
+        fetch(`/account/googleLogin/${name}/${email}/${password}`, {
+          method: "GET",
+          headers: {
+            Authorization: idToken,
+          },
+        })
+          .then((response) => response.text())
+          .then((text) => {
+            try {
+              setStatus(text);
+            } catch (err) {
+              console.log("err:", text);
+              setStatus(text);
+            }
+          })
+          .catch((error) => console.error(error));
+      } else {
+        console.warn("There is currently no logged in user.");
       }
-      console.log(userCred);
     });
   };
 
@@ -105,18 +92,7 @@ export function Login() {
             bgcolor={show ? "primary" : "success"}
             body={
               <>
-                <h5>Welcome {user.email}</h5>
-                <button>
-                  <a id="link1" href="#/Deposit">
-                    Deposit &nbsp; &#8811;
-                  </a>
-                </button>
-                <br /> <br />
-                <button>
-                  <a id="link1" href="#/Withdraw">
-                    Withdraw &nbsp; &#8811;
-                  </a>
-                </button>
+                <h5>Welcome {currentUser?.email}</h5>
               </>
             }
           ></Card>
@@ -150,8 +126,9 @@ export function Login() {
                   button="Login"
                   onClick={handleSubmit}
                   disabled={disabled}
-                ></Form>{" "}
+                ></Form>
                 <br />
+
                 <button
                   type="submit"
                   id="loginWithGoogle"
@@ -161,8 +138,9 @@ export function Login() {
                   Login with Google
                 </button>
                 <br />
+                <br />
                 <h6>
-                  Don't have an account?{" "}
+                  Don't have an account?
                   <a id="link1" href="#/CreateAccount">
                     Sign up
                   </a>
@@ -171,7 +149,7 @@ export function Login() {
             ) : (
               <>
                 <h5>{status}</h5>
-                {user.email}
+                {currentUser?.email}
               </>
             )
           }
