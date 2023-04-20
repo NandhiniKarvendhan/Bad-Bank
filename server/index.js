@@ -5,7 +5,7 @@ var dal = require("./dal.js");
 const admin = require("./config/firebase-config");
 
 // used to serve static files from build directory
-app.use(express.static("build"));
+app.use(express.static("../client/build"));
 app.use(cors());
 
 // To create account
