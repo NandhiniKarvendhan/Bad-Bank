@@ -1,14 +1,15 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import { Navbar } from "./pages/Navbar";
+import { Navbar } from "./components/Navbar";
 import { Home } from "./pages/Home";
 import { CreateAccount } from "./pages/CreateAccount";
 import { Login } from "./pages/Login";
-import { Deposit } from "./pages/Deposit";
-import { Withdraw } from "./pages/Withdraw";
-import { Balance } from "./pages/Balance";
-import { AllData } from "./pages/AllData";
+import { Deposit } from "./loginpages/Deposit";
+import { Withdraw } from "./loginpages/Withdraw";
+import { Balance } from "./loginpages/Balance";
+import { AllData } from "./loginpages/AllData";
 import { Routes, Route } from "react-router-dom";
+// import { AuthProvider } from "./components/context/AuthContext";
 
 function App() {
   return (
