@@ -10,9 +10,9 @@ Bad Bank is a three tier banking application created during Post Graduate Certif
 
 To get started with this project, please:
 
-1. Download or clone repo's files
-2. Run npm install in the terminal.
-3. Run npm build
+1. Download or clone repo's files.
+2. Move to client folder and run npm install in the terminal.
+3. Run npm build in client's folder.
 4. Move into the server folder, run npm install and run 'docker run -p 27017:27017 --name badbank -d mongo' in terminal.
 5. Run node index.js.
 
@@ -25,8 +25,9 @@ To get started with this project, please:
 1. Bootstrap
 2. React
 3. Node js
-4. Docker
-5. MongoDB
+4. Express
+5. Docker
+6. MongoDB
 
 ## Features
 
