@@ -1,6 +1,6 @@
 # BAD BANK
 
-![](https://github.com/NandhiniKarvendhan/Bad-Bank/blob/main/img/Badbank.gif)
+![](https://github.com/NandhiniKarvendhan/Bad-Bank/blob/main/client/img/Badbank.gif)
 
 Bad Bank is a three tier banking application created during Post Graduate Certificate in Full Stack Development with MERN conducted by MIT xPRO.
 
@@ -18,7 +18,7 @@ To get started with this project, please:
 
 ## Screenshots
 
-<img src='/img/createAccount.png' alt="Bad Bank"/>
+![](https://github.com/NandhiniKarvendhan/Bad-Bank/blob/main/client/img/createAccount.png)
 
 ## Technology
 
