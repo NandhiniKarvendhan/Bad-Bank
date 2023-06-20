@@ -1,2 +1,4 @@
 .DS_Store
 client/src/config
+
+server/config/serviceAccount.json
