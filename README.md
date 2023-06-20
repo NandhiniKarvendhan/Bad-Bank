@@ -18,7 +18,7 @@ To get started with this project, please:
 
 ## Screenshots
 
-![](https://github.com/NandhiniKarvendhan/Bad-Bank/blob/main/client/img/createAccount.png)
+![](https://github.com/NandhiniKarvendhan/Bad-Bank/blob/main/client/img/bad_bank.png)
 
 ## Technology
 
