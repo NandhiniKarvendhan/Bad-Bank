@@ -33,13 +33,14 @@ export function Balance() {
         body={
           show ? (
             <>
-              <Form
+              {/* <Form
                 type1="hidden"
                 type2="hidden"
                 type3="hidden"
                 onClick={handleSubmit}
                 button="Check Balance"
-              ></Form>
+              ></Form> */}
+              {handleSubmit}
             </>
           ) : (
             <>
