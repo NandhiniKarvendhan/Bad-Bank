@@ -3,6 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+// Example of firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDVQ1yRYlrgXI-Cjs-KKZMbQQNr6UOi-_g",
   authDomain: "bad-bank-33001.firebaseapp.com",
